@@ -1,37 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "polypuck",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "polypuck",
+  "description": "Disables PolyMc for fully modded clients",
   "authors": [
-    "Me!"
+    "TheEpicBlock"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/TheEpicBlock/PolyPuck/blob/master/README.md",
+    "sources": "https://github.com/TheEpicBlock/PolyPuck"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/polypuck/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "nl.theepicblock.polypuck.PolyPuck"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "polypuck.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
-    "fabric": "*",
-    "minecraft": "1.16.x"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
