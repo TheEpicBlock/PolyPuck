@@ -11,13 +11,12 @@ import net.minecraft.util.Identifier;
 
 public class PolyPuckServer implements DedicatedServerModInitializer {
 	private final static PolyMap NOPMAP = new NOPPolyMap();
-	public final static Identifier CHANNEL_ID = new Identifier("polypuck","enabled");
 
 	@Override
 	public void onInitializeServer() {
 		if (!FabricLoader.getInstance().isModLoaded("polymc")) {
 			throw new IllegalStateException("PolyPuck must be used together with PolyMc on the server");
 		}
-		PolyMapProvider.EVENT.register(player -> ServerPlayNetworking.canSend(player, CHANNEL_ID) ? NOPMAP : null);
+		PolyMapProvider.EVENT.register(player -> ServerPlayNetworking.canSend(player, PolyPuck.CHANNEL_ID) ? NOPMAP : null);
 	}
 }

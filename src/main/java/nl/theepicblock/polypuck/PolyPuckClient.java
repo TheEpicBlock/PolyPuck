@@ -10,7 +10,7 @@ public class PolyPuckClient implements ClientModInitializer {
 		if (FabricLoader.getInstance().isModLoaded("polymc")) {
 			System.out.println("[PolyPuck] warning: PolyMc should not be installed on the client");
 		}
-		ClientPlayNetworking.registerGlobalReceiver(PolyPuckServer.CHANNEL_ID, (client, handler, packet, sender) -> {
+		ClientPlayNetworking.registerGlobalReceiver(PolyPuck.CHANNEL_ID, (client, handler, packet, sender) -> {
 			//We're not handling the packet, only registering the channel so the server can pick it up.
 		});
 	}
