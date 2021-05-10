@@ -1,5 +1,5 @@
 # PolyPuck
-This mod disables [PolyMc](https://github.com/TheEpicBlock/PolyMc) when it is installed on both the mod and the server.
+This mod disables [PolyMc](https://github.com/TheEpicBlock/PolyMc) when it is installed on both the client and the server.
 
 ## Example usage
 You have a modpack that you use on the server. You add PolyPuck into the modpack and put PolyMc on the server. 
