@@ -12,8 +12,6 @@ group = project.maven_group
 
 repositories {
 	maven { url 'https://jitpack.io' }
-	mavenLocal()
-	maven { url 'https://jcenter.bintray.com/' }
 }
 
 dependencies {
