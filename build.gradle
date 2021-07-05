@@ -33,23 +33,26 @@ processResources {
 	}
 }
 
-task publishModrinth (type: com.modrinth.minotaur.TaskModrinthUpload, dependsOn: remapJar) { // Make sure it runs after build!
-	var modrinthToken = System.getenv("MODRINTH_TOKEN")
-	var changelogEnv = System.getenv("CHANGELOG")
-	if (modrinthToken == null || changelogEnv == null) {
-		throw new RuntimeException("Didn't find correct env variables")
+task publishModrinth (type: com.modrinth.minotaur.TaskModrinthUpload, dependsOn: remapJar) {
+	doFirst {
+		var modrinthToken = System.getenv("MODRINTH_TOKEN")
+		var changelogEnv = System.getenv("CHANGELOG")
+		if (modrinthToken == null || changelogEnv == null) {
+			throw new RuntimeException("Didn't find correct env variables")
+		}
+
+		token = modrinthToken
+		// An environment property called MODRINTH that is your token, set via Gradle CLI, GitHub Actions, Idea Run Configuration, or other
+		projectId = project.modrinth_project
+		uploadFile = remapJar
+
+		addLoader('fabric')
+		addGameVersion(project.minecraft_version)
+
+		versionNumber = project.mod_version
+		versionName = "${project.mod_version} for PolyMc ${project.polymc_version}"
+		changelog = changelogEnv
 	}
-
-	token = modrinthToken // An environment property called MODRINTH that is your token, set via Gradle CLI, GitHub Actions, Idea Run Configuration, or other
-	projectId = project.modrinth_project
-	uploadFile = remapJar
-
-	addLoader('fabric')
-	addGameVersion(project.minecraft_version)
-
-	versionNumber = project.mod_version
-	versionName = "${project.mod_version} for PolyMc ${project.polymc_version}"
-	changelog = changelogEnv
 }
 
 tasks.withType(JavaCompile).configureEach {
