@@ -32,7 +32,7 @@ jobs:
         run: ./gradlew publishModrinth --stacktrace
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-          CHANGELOG: ${{ github.event.body }}
+          CHANGELOG: ${{ github.event.release.body }}
 
       - name: Upload GitHub release
         uses: AButler/upload-release-assets@v2.0
